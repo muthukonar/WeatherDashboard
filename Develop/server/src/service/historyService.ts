@@ -15,8 +15,10 @@ class City {
 class HistoryService {
   // TODO: Define a read method that reads from the searchHistory.json file
   filePath: string;
+  
 
   constructor() {
+    const __dirname = path.dirname(new URL(import.meta.url).pathname);
     this.filePath = path.join(__dirname, 'searchHistory.json');
   }
   private async read(): Promise<City[]> {
