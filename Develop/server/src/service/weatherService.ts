@@ -52,11 +52,15 @@ class WeatherService {
   private destructureLocationData(locationData: Coordinates): Coordinates {
     return locationData;
   }
+
   // TODO: Create buildGeocodeQuery method
   // private buildGeocodeQuery(): string {}
-  // private buildGeocodeQuery(city: string): string {
-  //   return `${this.baseURL}/geo/1.0/direct?q=${city}&limit=1&appid=${this.apiKey}`;
+  // private buildGeocodeQuery(cityName: string): string {
+  //   return `${this.baseURL}/geo/1.0/direct?q=${cityName}&limit=1&appid=${this.apiKey}`;
   // }
+
+  
+  
   // TODO: Create buildWeatherQuery method
   // private buildWeatherQuery(coordinates: Coordinates): string {}
   private buildWeatherQuery(coordinates: Coordinates): string {

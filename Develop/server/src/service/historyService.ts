@@ -1,34 +1,36 @@
-import express, { type Request, type Response } from 'express';
-import fs from 'fs/promises';
+// import express, { type Request, type Response } from 'express';
+import fs from 'fs';
 import path from 'path';
 
 // TODO: Define a City class with name and id properties
 class City {
-  constructor(cityId: string, cityName: string) {}
+  cityId: string;
+  cityName: string;
+  constructor(cityId: string, cityName: string) {
+    this.cityId = cityId;
+    this.cityName = cityName
+  }
 }
 // TODO: Complete the HistoryService class
 class HistoryService {
   // TODO: Define a read method that reads from the searchHistory.json file
-  filepath: string;
+  filePath: string;
 
   constructor() {
-    this.filepath = path.join(__dirname, 'searchHistory.json');
+    this.filePath = path.join(__dirname, 'searchHistory.json');
   }
   private async read(): Promise<City[]> {
     try{
-      const data = await fs.promises.readFile(this.filepath, 'utf-8');
+      const data = await fs.promises.readFile(this.filePath, 'utf-8');
       return JSON.parse(data);
     } catch (error){
-      if (error.code ==='ENOENT') {
-        return [];
-      }
       throw error;
     }
   }
   // TODO: Define a write method that writes the updated cities array to the searchHistory.json file
   // private async write(cities: City[]) {}
 
-  private async write(cities: City[]): Promise<void> {
+  private async write(cities: City[]) {
     try {
       const data = JSON.stringify(cities, null, 2);
       await fs.promises.writeFile(this.filePath, data, 'utf-8');
@@ -52,9 +54,9 @@ class HistoryService {
   }
   // * BONUS TODO: Define a removeCity method that removes a city from the searchHistory.json file
   // async removeCity(id: string) {}
-  async removeCity(id: string): Promise<void> {
+  async removeCity(cityId: string): Promise<void> {
     const cities = await this.read();
-    const updatedCities = cities.filter((city) => city.id !== id);
+    const updatedCities = cities.filter((city) => city.cityId !== cityId);
     await this.write(updatedCities);
   }
 }
