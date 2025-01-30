@@ -8,7 +8,7 @@ Weather dashboard application that calls the OpenWeather API and renders data in
 
 - Zip and download the starter code
 - ensure node.js and npm is installed
-- Open integrated terminal and execute npm install to install packages like/for inquirer, typescript etc. 
+- Open integrated terminal and execute npm install to install all needed packages  
 - execute npm run start:dev
 
 
@@ -17,11 +17,14 @@ Weather dashboard application that calls the OpenWeather API and renders data in
 
 Weather dashboard will help get the current and 5 days forewast of weather in cities enetered.
 
+
+GitHUB link for the project repository :-  https://github.com/muthukonar/WeatherDashboard
+
+Reder Deployment link :- https://weatherdashboard-1chl.onrender.com/ 
+
+
 !["Weather Dashboard screenshot”](./weatherscreen.png );
 
-GitHUB link for the project repository
-
-https://github.com/muthukonar/WeatherDashboard
 
 
 

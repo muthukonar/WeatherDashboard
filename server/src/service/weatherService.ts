@@ -138,7 +138,7 @@ class WeatherService {
       days[day].push(data);
     });
 
-    const dayKeys = Object.keys(days).slice(0, 5);
+    const dayKeys = Object.keys(days).slice(1, 6);
 
     dayKeys.forEach(day => {
       const data = days[day][0];  // Picking the first forecast of the day
