@@ -23,7 +23,7 @@ GitHUB link for the project repository :-  https://github.com/muthukonar/Weather
 Reder Deployment link :- https://weatherdashboard-1chl.onrender.com/ 
 
 
-!["Weather Dashboard screenshot”](./weatherscreen.png );
+!["Weather Dashboard screenshot”](./weatherscreen.png )
 
 
 
