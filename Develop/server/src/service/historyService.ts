@@ -5,10 +5,10 @@ import path from 'path';
 // TODO: Define a City class with name and id properties
 class City {
   cityId: string;
-  cityName: string;
-  constructor(cityId: string, cityName: string) {
+  name: string;
+  constructor(cityId: string, name: string) {
     this.cityId = cityId;
-    this.cityName = cityName
+    this.name = name
   }
 }
 // TODO: Complete the HistoryService class
@@ -18,13 +18,16 @@ class HistoryService {
   
 
   constructor() {
-    const __dirname = path.dirname(new URL(import.meta.url).pathname);
-    this.filePath = path.join(__dirname, 'searchHistory.json');
+    // const __dirname = path.dirname(new URL(import.meta.url).pathname);
+    // this.filePath = path.join(__dirname, 'db/searchHistory.json');
+    this.filePath = 'db/searchHistory.json';
   }
   private async read(): Promise<City[]> {
     try{
       const data = await fs.promises.readFile(this.filePath, 'utf-8');
+      console.log(data);
       return JSON.parse(data);
+      
     } catch (error){
       throw error;
     }
@@ -32,14 +35,27 @@ class HistoryService {
   // TODO: Define a write method that writes the updated cities array to the searchHistory.json file
   // private async write(cities: City[]) {}
 
+
   private async write(cities: City[]) {
     try {
       const data = JSON.stringify(cities, null, 2);
+      // Make sure the directory exists before writing the file
+      await fs.promises.mkdir(path.dirname(this.filePath), { recursive: true });
       await fs.promises.writeFile(this.filePath, data, 'utf-8');
     } catch (error) {
       throw error;
     }
   }
+  
+
+  // private async write(cities: City[]) {
+  //   try {
+  //     const data = JSON.stringify(cities, null, 2);
+  //     await fs.promises.writeFile(this.filePath, data, 'utf-8');
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // }
   // TODO: Define a getCities method that reads the cities from the searchHistory.json file and returns them as an array of City objects
   // async getCities() {}
   async getCities(): Promise<City[]> {
@@ -50,7 +66,7 @@ class HistoryService {
   // async addCity(city: string) {}
   async addCity(cityName: string): Promise<void> {
     const cities = await this.read();
-    const newCity = new City(Date.now().toString(), cityName); // Create a new city with a unique ID
+    const newCity = new City(Date.now().toString(), cityName); 
     cities.push(newCity);
     await this.write(cities);
   }
@@ -64,3 +80,7 @@ class HistoryService {
 }
 
 export default new HistoryService();
+
+
+
+
