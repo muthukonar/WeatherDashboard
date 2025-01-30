@@ -4,10 +4,10 @@ import path from 'path';
 
 // TODO: Define a City class with name and id properties
 class City {
-  cityId: string;
+  id: string;
   name: string;
-  constructor(cityId: string, name: string) {
-    this.cityId = cityId;
+  constructor(id: string, name: string) {
+    this.id = id;
     this.name = name
   }
 }
@@ -64,17 +64,17 @@ class HistoryService {
   }
   // TODO Define an addCity method that adds a city to the searchHistory.json file
   // async addCity(city: string) {}
-  async addCity(cityName: string): Promise<void> {
+  async addCity(name: string): Promise<void> {
     const cities = await this.read();
-    const newCity = new City(Date.now().toString(), cityName); 
+    const newCity = new City(Date.now().toString(), name); 
     cities.push(newCity);
     await this.write(cities);
   }
   // * BONUS TODO: Define a removeCity method that removes a city from the searchHistory.json file
   // async removeCity(id: string) {}
-  async removeCity(cityId: string): Promise<void> {
+  async removeCity(id: string): Promise<void> {
     const cities = await this.read();
-    const updatedCities = cities.filter((city) => city.cityId !== cityId);
+    const updatedCities = cities.filter((city) => city.id !== id);
     await this.write(updatedCities);
   }
 }

@@ -45,21 +45,21 @@ router.get('/history', async (_req: Request, res: Response) => {
 // router.delete('/history/:id', async (req, res) => {});
 
 
-// router.delete('/history/:cityId', async (req: Request, res: Response) => {
-//   const { cityId } = req.params;
+router.delete('/history/:cityId', async (req: Request, res: Response) => {
+  const { cityId } = req.params;
 
-//   if (!cityId) {
-//     return res.status(400).json({ error: 'City ID is required' });
-//   }
+  if (!cityId) {
+    return res.status(400).json({ error: 'City ID is required' });
+  }
 
-//   try {
-//     await HistoryService.removeCity(cityId);
-//     return res.status(200).json({ message: 'City removed from search history' });
-//   } catch (error) {
-//     console.error('Error removing city from search history:', error);
-//     return res.status(500).json({ error: 'Unable to remove city from search history.' });
-//   }
-// });
+  try {
+    await HistoryService.removeCity(cityId);
+    return res.status(200).json({ message: 'City removed from search history' });
+  } catch (error) {
+    console.error('Error removing city from search history:', error);
+    return res.status(500).json({ error: 'Unable to remove city from search history.' });
+  }
+});
 
 
 
