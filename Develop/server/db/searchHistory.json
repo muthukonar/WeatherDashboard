@@ -1,9 +1,5 @@
 [
   {
-    "id": "1738254176433",
-    "name": "Mumbai"
-  },
-  {
     "id": "1738254240877",
     "name": "Toronto"
   },
@@ -12,11 +8,15 @@
     "name": "Montreal"
   },
   {
-    "id": "1738254268881",
-    "name": "San Francisco"
+    "id": "1738265918345",
+    "name": "Toronto"
   },
   {
-    "id": "1738254280490",
-    "name": "San Diego"
+    "id": "1738266190118",
+    "name": "Toronto"
+  },
+  {
+    "id": "1738267124057",
+    "name": "San Francisco"
   }
 ]

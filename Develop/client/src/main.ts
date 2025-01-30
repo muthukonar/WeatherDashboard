@@ -99,10 +99,12 @@ const renderCurrentWeather = (currentWeather: any): void => {
   }
 };
 
+
+
 const renderForecast = (forecast: any): void => {
   const headingCol = document.createElement('div');
   const heading = document.createElement('h4');
-
+  
   headingCol.setAttribute('class', 'col-12');
   heading.textContent = '5-Day Forecast:';
   headingCol.append(heading);

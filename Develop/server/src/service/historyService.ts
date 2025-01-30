@@ -15,7 +15,7 @@ class City {
 class HistoryService {
   // TODO: Define a read method that reads from the searchHistory.json file
   filePath: string;
-  
+
 
   constructor() {
     // const __dirname = path.dirname(new URL(import.meta.url).pathname);
@@ -23,12 +23,12 @@ class HistoryService {
     this.filePath = 'db/searchHistory.json';
   }
   private async read(): Promise<City[]> {
-    try{
+    try {
       const data = await fs.promises.readFile(this.filePath, 'utf-8');
       console.log(data);
       return JSON.parse(data);
-      
-    } catch (error){
+
+    } catch (error) {
       throw error;
     }
   }
@@ -46,16 +46,9 @@ class HistoryService {
       throw error;
     }
   }
-  
 
-  // private async write(cities: City[]) {
-  //   try {
-  //     const data = JSON.stringify(cities, null, 2);
-  //     await fs.promises.writeFile(this.filePath, data, 'utf-8');
-  //   } catch (error) {
-  //     throw error;
-  //   }
-  // }
+
+  
   // TODO: Define a getCities method that reads the cities from the searchHistory.json file and returns them as an array of City objects
   // async getCities() {}
   async getCities(): Promise<City[]> {
@@ -66,7 +59,7 @@ class HistoryService {
   // async addCity(city: string) {}
   async addCity(name: string): Promise<void> {
     const cities = await this.read();
-    const newCity = new City(Date.now().toString(), name); 
+    const newCity = new City(Date.now().toString(), name);
     cities.push(newCity);
     await this.write(cities);
   }
