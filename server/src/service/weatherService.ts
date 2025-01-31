@@ -101,7 +101,13 @@ class WeatherService {
       main.humidity,
       weather[0].icon,
       weather[0].description,
-      new Date(dt * 1000).toLocaleDateString());
+      new Date(dt * 1000).toLocaleDateString('en-US', {
+    timeZone: process.env.TZ || 'UTC', 
+    weekday: 'long',
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+  }));
 
 
     const date = new Date(dt * 1000).toLocaleDateString();
@@ -131,7 +137,13 @@ class WeatherService {
 
     forecastData.forEach((data: any) => {
       const date = new Date(data.dt * 1000);
-      const day = date.toLocaleDateString(); 
+      const day = date.toLocaleDateString('en-US', {
+    timeZone: process.env.TZ || 'UTC', 
+    weekday: 'long',
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+  }); 
       if (!days[day]) {
         days[day] = [];
       }
