@@ -131,7 +131,7 @@ class WeatherService {
 
     forecastData.forEach((data: any) => {
       const date = new Date(data.dt * 1000);
-      const day = date.toLocaleDateString(); // YYYY-MM-DD format
+      const day = date.toLocaleDateString(); 
       if (!days[day]) {
         days[day] = [];
       }
@@ -141,7 +141,7 @@ class WeatherService {
     const dayKeys = Object.keys(days).slice(1, 6);
 
     dayKeys.forEach(day => {
-      const data = days[day][0];  // Picking the first forecast of the day
+      const data = days[day][0];  
       forecast.push(new Weather(
         currentWeather.city,
         data.main.temp,
